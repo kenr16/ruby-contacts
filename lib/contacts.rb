@@ -42,6 +42,10 @@ class Contact
     @emails = []
   end
 
+  def self.delete_contact(id)
+    @@contacts.delete(self.find_contact(id))
+  end
+
   def self.find_contact(id)
     @@contacts.find {|contact| contact.id == id}
   end

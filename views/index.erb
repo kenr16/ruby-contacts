@@ -1,4 +1,14 @@
-<h1><%= @message %></h1>
+<% unless Contact.all.empty?%>
+<h2>Your Contacts Book:</h2>
+<% end %>
+
+<ul>
+  <% Contact.all.each do |contact| %>
+    <%= "<li><a href='/contact-page/#{contact.id}'>#{contact.name}</a></li>" %>
+  <% end %>
+</ul>
+
+<h2><%= @message %></h2>
 <form action="/add-contact">
   <div class="form-group">
     <label for="name">Contact Name:</label>
@@ -44,9 +54,3 @@
   <button class="btn btn-primary">Add Contact</button>
 
 </form>
-
-<ul>
-  <% Contact.all.each do |contact| %>
-    <%= "<li><a href='/contact-page/#{contact.id}'>#{contact.name}</a></li>" %>
-  <% end %>
-</ul>

@@ -74,3 +74,9 @@ get("/edit-email") do
   contact.add_email(new_email)
   erb(:index)
 end
+
+get("/delete") do
+  contact = Contact.find_contact(session[:contact_id])
+  Contact.delete_contact(contact.id)
+  erb(:index)
+end

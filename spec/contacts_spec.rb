@@ -82,5 +82,35 @@ describe 'Contact' do
     end
   end
 
+  describe("#initialize") do
+    it "Adds and tests a full contact to spec" do
+      test_contact = Contact.new("John Doe")
+      test_address = Address.new("", "", "", "")
+      test_contact.add_address(test_address)
+      expect(test_contact.addresses).to eq([])
+    end
+  end
+
+  describe("#initialize") do
+    it "Adds and tests a full contact to spec" do
+      test_contact = Contact.new("")
+      test_address = Address.new("", "", "", "")
+      test_contact.add_address(test_address)
+      expect(test_contact.addresses).to eq([])
+    end
+  end
+
+  describe("#find_contact") do
+    it "Finds and returns a contact based on a given ID" do
+      test_contact = Contact.new("John Doe")
+      test_contact.save
+      id = test_contact.id
+      puts test_contact
+      puts Contact.find_contact(id)
+      expect(Contact.find_contact(id)).to eq(test_contact)
+    end
+  end
+
+
 
 end

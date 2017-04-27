@@ -1,3 +1,5 @@
+require('uuid')
+
 class Address
   attr_accessor(:street, :city, :state, :type)
 
@@ -30,13 +32,18 @@ end
 class Contact
   @@contacts = []
 
-  attr_accessor(:name)
+  attr_accessor(:name, :id)
 
   def initialize(name)
     self.name = name
+    self.id = UUID.new.generate
     @addresses = []
     @phones = []
     @emails = []
+  end
+
+  def self.find_contact(id)
+    @@contacts.find {|contact| contact.id == id}
   end
 
   def addresses
@@ -44,7 +51,7 @@ class Contact
   end
 
   def add_address(address)
-    @addresses.push(address)
+    @addresses.push(address) unless address.street.empty? || address.city.empty? || address.state.empty? || address.type.empty?
   end
 
   def phones
@@ -64,7 +71,7 @@ class Contact
   end
 
   define_method(:save) do
-    @@contacts.push(self)
+    @@contacts.push(self) unless self.name.empty?
   end
 
   def self.all

@@ -1,0 +1,20 @@
+<h1><%= @message %></h1>
+<form action="/edit-contact">
+  <div class="form-group">
+    <h4>Add address</h4>
+    <label for="street">Street Address:</label>
+    <input name="street" id="street" class="form-control" type="text">
+
+    <label for="city">City:</label>
+    <input name="city" id="city" class="form-control" type="text">
+
+    <label for="state">State:</label>
+    <input name="state" id="state" class="form-control" type="text">
+
+    <label for="address-type">Address Type:</label>
+    <input name="address-type" id="address-type" class="form-control" type="text">
+  </div>
+  <button class="btn btn-primary">Add Address</button>
+</form>
+<hr>
+<a href="/" class="btn btn-info">Back</a>

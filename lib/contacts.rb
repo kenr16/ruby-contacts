@@ -6,7 +6,6 @@ class Address
     self.city = city
     self.state = state
   end
-
 end
 
 class Phone
@@ -16,5 +15,12 @@ class Phone
     self.number = number
     self.type = type
   end
-  
+end
+
+class Email
+  attr_accessor(:address)
+
+  def initialize(address)
+    self.address = address
+  end
 end

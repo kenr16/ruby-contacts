@@ -19,3 +19,12 @@ describe 'Phone' do
     end
   end
 end
+
+describe 'Email' do
+  describe("#initialize") do
+    it "Adds an intitial email to the list" do
+      test_email = Email.new("test_address@gmail.com")
+      expect(test_email.address).to eq("test_address@gmail.com")
+    end
+  end
+end

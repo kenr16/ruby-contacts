@@ -41,7 +41,7 @@ describe 'Contact' do
     it "Adds the a new phone object to the phones array" do
       test_contact = Contact.new("John Doe")
       test_phone = Phone.new("808-937-8894", "Home")
-      test_contact.add_phones(test_phone)
+      test_contact.add_phone(test_phone)
       expect(test_contact.phones).to eq([test_phone])
     end
   end
@@ -60,6 +60,23 @@ describe 'Contact' do
       test_contact = Contact.new("John Doe")
       test_email = Email.new("test_address@gmail.com", "Home")
       test_contact.add_email(test_email)
+      expect(test_contact.emails).to eq([test_email])
+    end
+  end
+
+  describe("#initialize") do
+    it "Adds and tests a full contact to spec" do
+      test_contact = Contact.new("John Doe")
+      test_phone = Phone.new("808-937-8894", "Home")
+      test_phone2 = Phone.new("555-555-5555", "Work")
+      test_address = Address.new("123 Street", "Portland", "Oregon", "Home")
+      test_email = Email.new("test_address@gmail.com", "Home")
+      test_contact.add_phone(test_phone)
+      test_contact.add_phone(test_phone2)
+      test_contact.add_address(test_address)
+      test_contact.add_email(test_email)
+      expect(test_contact.phones).to eq([test_phone, test_phone2])
+      expect(test_contact.addresses).to eq([test_address])
       expect(test_contact.emails).to eq([test_email])
     end
   end

@@ -50,7 +50,7 @@ class Contact
     @phones
   end
 
-  def add_phones(phone)
+  def add_phone(phone)
     @phones.push(phone)
   end
 

@@ -67,7 +67,7 @@ class Contact
   end
 
   def add_phone(phone)
-    @phones.push(phone)
+    @phones.push(phone) unless phone.number.empty? || phone.type.empty?
   end
 
   def emails
@@ -75,7 +75,7 @@ class Contact
   end
 
   def add_email(email)
-    @emails.push(email)
+    @emails.push(email) unless email.address.empty? || email.type.empty?
   end
 
   define_method(:save) do

@@ -1,5 +1,4 @@
 <h1><%= @message %></h1>
-
 <h4>Address Entries:<h4>
 <ul>
 <% @contact.addresses.each do |address| %>
@@ -8,22 +7,25 @@
 </ul>
 
 <br>
+<% unless @contact.phones.empty?  %>
 <h4>Phone Numbers:<h4>
 <ul>
 <% @contact.phones.each do |phone| %>
   <%= "<li> #{phone.number}, #{phone.type}  </li>" %>
-<% end%>
+<% end %>
 </ul>
+<% end %>
 
 <br>
+<% unless @contact.emails.empty? %>
 <h4>Email Address:<h4>
 <ul>
 <% @contact.emails.each do |email| %>
   <%= "<li> #{email.address}, #{email.type}  </li>" %>
 <% end%>
 </ul>
+<% end %>
 <br>
-
 
 
 <form action="/edit-contact">
@@ -51,36 +53,43 @@
 </form>
 <hr>
 
-<form action="/edit-phone">
-  <div class="form-group">
-    <h3>Add Phone:</h3>
-    <label for="phone">Phone Number:</label>
-    <input name="phone" id="phone" class="form-control" type="text">
+<div class="row">
+  <div class="col-md-6">
+    <form action="/edit-phone">
+      <div class="form-group">
+        <h3>Add Phone:</h3>
+        <label for="phone">Phone Number:</label>
+        <input name="phone" id="phone" class="form-control" type="text">
+      </div>
+
+      <div class="form-group">
+        <label for="phone-type">Line Type:</label>
+        <input name="phone-type" id="phone-type" class="form-control" type="text">
+      </div>
+
+      <button class="btn btn-primary">Add Phone</button>
+    </form>
   </div>
+  <div class="col-md-6">
+    <form action="/edit-email">
+      <div class="form-group">
+        <h3>Add Email:</h3>
+        <label for="email">Email:</label>
+        <input name="email" id="email" class="form-control" type="text">
+      </div>
 
-  <div class="form-group">
-    <label for="phone-type">Line Type:</label>
-    <input name="phone-type" id="phone-type" class="form-control" type="text">
+      <div class="form-group">
+        <label for="email-type">Email Type:</label>
+        <input name="email-type" id="email-type" class="form-control" type="text">
+      </div>
+
+      <button class="btn btn-primary">Add Email</button>
+    </form>
   </div>
-
-  <button class="btn btn-primary">Add Phone</button>
-</form>
-
-<form action="/edit-email">
-  <div class="form-group">
-    <h3>Add Email:</h3>
-    <label for="email">Email:</label>
-    <input name="email" id="email" class="form-control" type="text">
-  </div>
-
-  <div class="form-group">
-    <label for="email-type">Email Type:</label>
-    <input name="email-type" id="email-type" class="form-control" type="text">
-  </div>
-
-  <button class="btn btn-primary">Add Email</button>
-</form>
-
+</div>
 <hr>
-<a href="/" class="btn btn-info">Back</a>
-<a href="/delete" class="btn btn-danger">Delete Contact</a>
+
+<div class="row" id="bottom-buttons">
+  <a href="/delete" class="btn btn-danger">Delete Contact</a>
+  <a href="/" class="btn btn-info">Back</a>
+</div>

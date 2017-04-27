@@ -36,17 +36,31 @@ end
 
 get("/contact-page/:id") do
   session[:contact_id] = params.fetch('id') #fetches the id directly from the url of the hyperlink
-  @message = "Contact-page"
+  @contact = Contact.find_contact(params.fetch('id'))
+  @message = "#{@contact.name}"
   erb(:edit)
 end
 
 get("/edit-contact") do
-  @message = "Contact Successfully Updated"
-  name = params.fetch('name')
+  @message = "Address Successfully Updated"
+  contact = Contact.find_contact(session[:contact_id])
+  puts "******************************"
+  puts session[:contact_id]
   street = params.fetch('street')
   city = params.fetch('city')
   state = params.fetch('state')
   address_type = params.fetch('address-type')
   new_address = Address.new(street, city, state, address_type)
+  contact.add_address(new_address)
+  erb(:index)
+end
 
+get("/edit-phone") do
+  @message = "Phone Number Successfully Updated"
+  contact = Contact.find_contact(session[:contact_id])
+  phone = params.fetch('phone')
+  phone_type = params.fetch('phone-type')
+  new_phone = Phone.new(phone, phone_type)
+  contact.add_phone(new_phone)
+  erb(:index)
 end

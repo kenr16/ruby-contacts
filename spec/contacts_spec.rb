@@ -46,5 +46,23 @@ describe 'Contact' do
     end
   end
 
+  describe("#add_address") do
+    it "Adds the a new address object to the addresses array" do
+      test_contact = Contact.new("John Doe")
+      test_address = Address.new("123 Street", "Portland", "Oregon", "Home")
+      test_contact.add_address(test_address)
+      expect(test_contact.addresses).to eq([test_address])
+    end
+  end
+
+  describe("#add_phone") do
+    it "Adds the a new phone object to the phones array" do
+      test_contact = Contact.new("John Doe")
+      test_phone = Phone.new("808-937-8894", "Home")
+      test_contact.add_phones(test_phone)
+      expect(test_contact.phones).to eq([test_phone])
+    end
+  end
+
 
 end

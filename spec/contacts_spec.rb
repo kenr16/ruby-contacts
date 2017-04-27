@@ -55,12 +55,12 @@ describe 'Contact' do
     end
   end
 
-  describe("#add_phone") do
-    it "Adds the a new phone object to the phones array" do
+  describe("#add_email") do
+    it "Adds the a new email object to the emails array" do
       test_contact = Contact.new("John Doe")
-      test_phone = Phone.new("808-937-8894", "Home")
-      test_contact.add_phones(test_phone)
-      expect(test_contact.phones).to eq([test_phone])
+      test_email = Email.new("test_address@gmail.com", "Home")
+      test_contact.add_email(test_email)
+      expect(test_contact.emails).to eq([test_email])
     end
   end
 

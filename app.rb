@@ -76,6 +76,7 @@ get("/edit-email") do
 end
 
 get("/delete") do
+  @message = "Contact Deleted"
   contact = Contact.find_contact(session[:contact_id])
   Contact.delete_contact(contact.id)
   erb(:index)

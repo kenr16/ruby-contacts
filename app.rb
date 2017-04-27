@@ -64,3 +64,13 @@ get("/edit-phone") do
   contact.add_phone(new_phone)
   erb(:index)
 end
+
+get("/edit-email") do
+  @message = "Email Successfully Updated"
+  contact = Contact.find_contact(session[:contact_id])
+  email = params.fetch('email')
+  email_type = params.fetch('email-type')
+  new_email = Email.new(email, email_type)
+  contact.add_email(new_email)
+  erb(:index)
+end

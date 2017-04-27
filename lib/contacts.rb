@@ -28,13 +28,14 @@ class Email
 end
 
 class Contact
-  @addresses = []
-  @phones = []
-  @emails = []
+
   attr_accessor(:name)
 
   def initialize(name)
     self.name = name
+    @addresses = []
+    @phones = []
+    @emails = []
   end
 
   def addresses
@@ -60,6 +61,4 @@ class Contact
   def add_email(email)
     @emails.push(email)
   end
-
-
 end

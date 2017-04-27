@@ -1,10 +1,11 @@
 class Address
-  attr_accessor(:street, :city, :state)
+  attr_accessor(:street, :city, :state, :type)
 
-  def initialize(street, city, state)
+  def initialize(street, city, state, type)
     self.street = street
     self.city = city
     self.state = state
+    self.type = type
   end
 end
 
@@ -18,9 +19,47 @@ class Phone
 end
 
 class Email
-  attr_accessor(:address)
+  attr_accessor(:address, :type)
 
-  def initialize(address)
+  def initialize(address, type)
     self.address = address
+    self.type = type
   end
+end
+
+class Contact
+  @addresses = []
+  @phones = []
+  @emails = []
+  attr_accessor(:name)
+
+  def initialize(name)
+    self.name = name
+  end
+
+  def addresses
+    @addresses
+  end
+
+  def add_address(address)
+    @addresses.push(address)
+  end
+
+  def phones
+    @phones
+  end
+
+  def add_phones(phone)
+    @phones.push(phone)
+  end
+
+  def emails
+    @emails
+  end
+
+  def add_email(email)
+    @emails.push(email)
+  end
+
+
 end

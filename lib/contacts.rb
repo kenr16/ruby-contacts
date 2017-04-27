@@ -28,6 +28,7 @@ class Email
 end
 
 class Contact
+  @@contacts = []
 
   attr_accessor(:name)
 
@@ -61,4 +62,13 @@ class Contact
   def add_email(email)
     @emails.push(email)
   end
+
+  define_method(:save) do
+    @@contacts.push(self)
+  end
+
+  def self.all
+    @@contacts
+  end
+
 end

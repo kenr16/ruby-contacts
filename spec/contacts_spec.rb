@@ -33,7 +33,8 @@ describe 'Contact' do
   describe("#initialize") do
     it "Adds an inital name to the contact list" do
       test_contact = Contact.new("John Doe")
-      expect(test_contact.name).to eq("John Doe")
+      expect(test_contact.save)
+      expect(Contact.all).to eq([test_contact])
     end
   end
 
